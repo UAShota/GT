@@ -1,5 +1,45 @@
 """ Simple loader """
+from random import shuffle
 
 from trader import Trader
 
-Trader("", "", 0)
+tmp_users = [
+    "04fc6fa23edb422d48637237ebb22af6&viewer_id=637179609",
+    "3efb96396eb899e8c008ef06011950a3&viewer_id=637179258",
+    "3f2c65585cc60a7c4c38d4823fdce05f&viewer_id=637177488",
+    "fa734cf62d0887b763944db22ebcf52d&viewer_id=637180355",
+    "280471eadaf2db4dcab18b6a33f4c36c&viewer_id=637178190",
+    "44997219af1226fa8c87449bba51fb20&viewer_id=637181039",
+    "7418cbbab918e52da7bd877c160fdd24&viewer_id=640700693",
+    "310ea8c2e52bd3427a4c87fd3434b829&viewer_id=640700814",
+    "2a8031abeeb9238ad2e2da3a3a352f25&viewer_id=640702478",
+    "c9f47b10c5573224631d3aa159c2dc50&viewer_id=640698571",
+    "9e63ff21673b3b54abc6123558d5d73d&viewer_id=640700359",
+    "182a27939578f7115ace3874b467a1e9&viewer_id=640701974",
+    "f98d6c31b62cea769b0410a311e666a3&viewer_id=640700511",
+    "e32d043cfa60b06e988f3adea3717799&viewer_id=640702252",
+    "55a3be05b141483b7c17b386675737cd&viewer_id=640702363",
+    "94c9a03b730e13f0edcd04e21377c54d&viewer_id=641076691",
+    "8ebd580934ef72194c25d9c90efa66e4&viewer_id=641076810",
+    "4a89bd9908df960fa36a2f9754803e90&viewer_id=641076824",
+    "655c7a52fcd4d0170925abb5e21b1501&viewer_id=641076895",
+    "a056eee57eb64fd5423649302f1e8354&viewer_id=641076930",
+    "46746c451737ee61229a1029b9a12ae4&viewer_id=641076993",
+    "ae0fce9a1d658c33388de433d91dcc4d&viewer_id=638591540",
+    "885ea6dbe54770d86d64df22b5d9b141&viewer_id=637401940",
+    "f0633bb5c41a262fb50b76d0d026b295&viewer_id=637404091",
+    "45abe628470066337b2309ce22310f4f&viewer_id=637404240",
+    "c199730d596f9aaa4c976fc7fd96c820&viewer_id=637404862",
+    "3a1057cdef8205791fa6adf0a7bd8b5c&viewer_id=638588600",
+    "bcd39731550916861fc1f6e0dd3106a7&viewer_id=638591941",
+    "d7576051cd1c23b26a3f0c23989aaac9&viewer_id=638591985",
+    "3dd6ccb8187943cbbaa272d4c2ca5742&viewer_id=638588439",
+    "75d2444ba776de02c8ffc74b4e6b6168&viewer_id=638593941",
+    "bfeddb0742f9066570df399f1e229dea&viewer_id=638591779",
+    "b0805e320352243437e7cf449cbbb9fa&viewer_id=638596914",
+    "7e65ffcaf34bb38c6dbf497cbe252337&viewer_id=638600536",
+    "0b3598169014d057b9d5c6651cbef8df&viewer_id=641077107"
+]
+
+shuffle(tmp_users)
+Trader(tmp_users)
