@@ -45,7 +45,7 @@
 <script>
     for (let tmp_item in GData) {
         let tmp_data = GData[tmp_item]
-        let tmp_div = $("<div class='row'><a href='" + tmp_item + "'>" + tmp_data[2] + "</a><br/>" + tmp_data[0] + "</div>");
+        let tmp_div = $("<div class='row'><a href='https://vk.com/app7055214_-182985865#page=item&id=" + tmp_item + "' target='_blank'>" + tmp_data[2] + "</a><br/>" + tmp_data[0] + "</div>");
         $(document.currentScript.parentElement).append(tmp_div);
         tmp_div.append($("<div class='sep'></div>"));
         for (let tmp_key in tmp_data[1]) {
