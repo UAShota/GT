@@ -114,10 +114,12 @@ class TraderApi:
         if (not tmp_response.ok) or (json.loads(tmp_response.text)["result"] != 1):
             self.log("%s failed item %d program %s" % (self.bagid, itemid, tmp_response.text))
             return False
-        # Crop items
+        # Showing
+        self.log("%s @ %s" % (self.bagid, json.loads(tmp_response.text)))
+        # Fail
         if "🚫" in tmp_response.text:
-            self.log(json.loads(tmp_response.text)["message"])
-            return time.sleep(3600)
+            return time.sleep(1800)
+        # Crop items
         tmp_reitems = self.relot.findall(tmp_response.text)
         tmp_lots = []
         for tmp_reitem in tmp_reitems:
@@ -147,7 +149,7 @@ class Trader:
 
         for tmp_bagid in bagids:
             threading.Thread(target=self.run, args=(TraderApi(tmp_bagid),)).start()
-            time.sleep(random.randint(3, 15))
+            time.sleep(random.randint(5, 20))
 
     def load(self):
         """ Загрузка БД из файла """
@@ -187,7 +189,7 @@ class Trader:
         print("> Ready " + bagapi.bagid)
         while True:
             self.loadnext(bagapi)
-            time.sleep(60 / 30 * 60)
+            time.sleep(60 / 30 * 60 + random.randint(30, 60))
 
     def loadinc(self):
         """ Inc current key """
