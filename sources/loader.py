@@ -8,7 +8,6 @@ tmp_users = [
     "3efb96396eb899e8c008ef06011950a3&viewer_id=637179258",
     "3f2c65585cc60a7c4c38d4823fdce05f&viewer_id=637177488",
     "fa734cf62d0887b763944db22ebcf52d&viewer_id=637180355",
-    "280471eadaf2db4dcab18b6a33f4c36c&viewer_id=637178190",
     "44997219af1226fa8c87449bba51fb20&viewer_id=637181039",
     "7418cbbab918e52da7bd877c160fdd24&viewer_id=640700693",
     "310ea8c2e52bd3427a4c87fd3434b829&viewer_id=640700814",

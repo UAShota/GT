@@ -84,17 +84,21 @@ class TraderApi:
         # Completed array
         return tmp_params
 
+    def log(self, message: str):
+        """ Log message """
+        print("%s: %s" % (datetime.datetime.now(), message))
+
     def queryLots(self, itemid: int, itemname: str):
         """ Translate item params """
         tmp_referer = self.API_URL % (self.ACT_TYPE_ITEM % itemid, self.bagid)
         tmp_response = requests.get(self.API_URL % (self.ACT_TYPE_ITEM % itemid, self.bagid), headers=self.buildHeaders(0, tmp_referer))
         if not tmp_response.ok:
-            print("%s failed item %d query" % (self.bagid, itemid))
+            self.log("%s failed item %d query" % (self.bagid, itemid))
             return False
         # Item defense
         tmp_params = re.search(r"window.pv\d+ = ({.+})", tmp_response.text)
         if not tmp_params:
-            print("%s failed item %d params" % (self.bagid, itemid))
+            self.log("%s failed item %d params" % (self.bagid, itemid))
             return False
         tmp_params = json.loads(tmp_params[1])
         tmp_params = {
@@ -108,8 +112,12 @@ class TraderApi:
         tmp_params = self.buildQuery(tmp_params)
         tmp_response = requests.post(self.API_URL % ("a_program_run", self.bagid), tmp_params, headers=self.buildHeaders(len(tmp_params), tmp_referer))
         if (not tmp_response.ok) or (json.loads(tmp_response.text)["result"] != 1):
+            self.log("%s failed item %d program %s" % (self.bagid, itemid, tmp_response.text))
             return False
         # Crop items
+        if "🚫" in tmp_response.text:
+            self.log(json.loads(tmp_response.text)["message"])
+            return time.sleep(3600)
         tmp_reitems = self.relot.findall(tmp_response.text)
         tmp_lots = []
         for tmp_reitem in tmp_reitems:
@@ -199,6 +207,8 @@ class Trader:
             self.locker.release()
         # Current damp
         tmp_lots = bagapi.queryLots(tmp_code, tmp_name)
+        if not tmp_lots:
+            return
         # Saving
         self.locker.acquire()
         try:
