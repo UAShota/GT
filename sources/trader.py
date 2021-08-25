@@ -114,10 +114,9 @@ class TraderApi:
         if (not tmp_response.ok) or (json.loads(tmp_response.text)["result"] != 1):
             self.log("%s failed item %d program %s" % (self.bagid, itemid, tmp_response.text))
             return False
-        # Showing
-        self.log("%s @ %s" % (self.bagid, json.loads(tmp_response.text)))
         # Fail
         if "🚫" in tmp_response.text:
+            self.log("%s @ %s" % (self.bagid, json.loads(tmp_response.text)))
             return time.sleep(1800)
         # Crop items
         tmp_reitems = self.relot.findall(tmp_response.text)
