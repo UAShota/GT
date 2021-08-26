@@ -117,7 +117,7 @@ class TraderApi:
         # Fail
         if "🚫" in tmp_response.text:
             self.log("%s @ %s" % (self.bagid, json.loads(tmp_response.text)))
-            return time.sleep(1800)
+            return time.sleep(600)
         # Crop items
         tmp_reitems = self.relot.findall(tmp_response.text)
         tmp_lots = []
