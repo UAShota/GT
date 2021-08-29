@@ -188,7 +188,7 @@ class Trader:
         print("> Ready " + bagapi.bagid)
         while True:
             self.loadnext(bagapi)
-            time.sleep(60 / 30 * 60 + random.randint(30, 60))
+            time.sleep(4 * 60 + random.randint(10, 60))
 
     def loadinc(self):
         """ Inc current key """
@@ -206,7 +206,7 @@ class Trader:
             self.loadinc()
         finally:
             self.locker.release()
-        # Current damp
+        # Current dump
         tmp_lots = bagapi.queryLots(tmp_code, tmp_name)
         if not tmp_lots:
             return
