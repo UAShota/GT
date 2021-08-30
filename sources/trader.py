@@ -117,7 +117,7 @@ class TraderApi:
         # Fail
         if "🚫" in tmp_response.text:
             self.log("%s @ %s" % (self.bagid, json.loads(tmp_response.text)))
-            return time.sleep(600)
+            return time.sleep(3700)
         # Crop items
         tmp_reitems = self.relot.findall(tmp_response.text)
         tmp_lots = []
@@ -188,7 +188,7 @@ class Trader:
         print("> Ready " + bagapi.bagid)
         while True:
             self.loadnext(bagapi)
-            time.sleep(4 * 60 + random.randint(10, 60))
+            time.sleep(3 * 60 + random.randint(10, 60))
 
     def loadinc(self):
         """ Inc current key """
